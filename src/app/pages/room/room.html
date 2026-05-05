@@ -1,0 +1,25 @@
+<section
+  class="h-dvh bg-[#1f0d3f] bg-[radial-gradient(50%_50%_at_50%_50%,#330072_0%,rgba(31,13,63,0.7)_100%)]"
+>
+  <dialog
+    #modal
+    class="bg-[#1F0D3F] py-16 px-28 border border-[#BB65FF] rounded-3xl shadow-[0px_0px_20px_0px_#BDBDFF33_inset,0px_0px_15px_0px_#6429CD]"
+  >
+    <form (ngSubmit)="createPlayer()" class="flex flex-col">
+      <label class="text-sm font-bold mb-2 text-white" for="playerName">Tu nombre</label>
+      <input
+        class="border border-[#BB65FF] text-white min-w-73 px-2 max-h-10 mb-8 py-2 rounded-3xl focus-visible:outline-none"
+        type="text"
+        id="playerName"
+        name="playerName"
+        [(ngModel)]="playerName"
+      />
+      <button
+        [disabled]="!playerName()"
+        class="bg-[#F6F7FC] text-[#330072] font-semibold text-[16px] rounded-4xl min-h-10 w-40 self-center cursor-pointer disabled:bg-[#45395d] disabled:text-[#7f7290] disabled:cursor-not-allowed"
+      >
+        Continuar
+      </button>
+    </form>
+  </dialog>
+</section>

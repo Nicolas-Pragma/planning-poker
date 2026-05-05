@@ -1,0 +1,39 @@
+@if (showLogo()) {
+  <section
+    class="h-dvh w-dvw flex items-center justify-center bg-[#1f0d3f] bg-[radial-gradient(50%_50%_at_50%_50%,#330072_0%,rgba(31,13,63,0.7)_100%)]"
+  >
+    <figure class="flex items-center justify-center flex-col gap-4">
+      <img src="logoWhite.svg" alt="LogoPoker" />
+      <img src="logo.svg" alt="LogoPragma" />
+    </figure>
+  </section>
+} @else {
+  <section
+    class="bg-[#1f0d3f] bg-[radial-gradient(50%_50%_at_50%_50%,#330072_0%,rgba(31,13,63,0.7)_100%)]"
+  >
+    <header class="h-36 w-dvw flex items-center bg-transparent py-9 px-20">
+      <figure class="flex items-center justify-center gap-4">
+        <img src="logoWhite.svg" alt="LogoPoker" />
+        <h1 class="text-xl font-semibold">Crear partida</h1>
+      </figure>
+    </header>
+    <section class="h-[calc(100dvh-144px)] w-dvw flex items-center justify-center pb-36">
+      <form (ngSubmit)="createGame()" class="flex flex-col">
+        <label class="text-sm font-bold mb-2" for="gameName">Nombra la partida</label>
+        <input
+          class="border border-[#BB65FF] min-w-73 px-2 max-h-10 mb-8 py-2 rounded-3xl focus-visible:outline-none"
+          type="text"
+          id="gameName"
+          name="gameName"
+          [(ngModel)]="gameName"
+        />
+        <button
+          [disabled]="!gameName()"
+          class="bg-[#F6F7FC] text-[#330072] font-semibold text-[16px] rounded-4xl min-h-10 w-40 self-center cursor-pointer disabled:bg-[#45395d] disabled:text-[#7f7290] disabled:cursor-not-allowed"
+        >
+          Crear partida
+        </button>
+      </form>
+    </section>
+  </section>
+}

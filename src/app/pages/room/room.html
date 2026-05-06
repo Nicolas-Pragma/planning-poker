@@ -5,17 +5,52 @@
     #modal
     class="bg-[#1F0D3F] py-16 px-28 border border-[#BB65FF] rounded-3xl shadow-[0px_0px_20px_0px_#BDBDFF33_inset,0px_0px_15px_0px_#6429CD]"
   >
-    <form (ngSubmit)="createPlayer()" class="flex flex-col">
+    <form #myForm="ngForm" (ngSubmit)="createPlayer()" class="flex flex-col">
       <label class="text-sm font-bold mb-2 text-white" for="playerName">Tu nombre</label>
       <input
-        class="border border-[#BB65FF] text-white min-w-73 px-2 max-h-10 mb-8 py-2 rounded-3xl focus-visible:outline-none"
+        class="border border-[#BB65FF] text-white min-w-73 px-2 max-h-10 py-2 rounded-3xl focus-visible:outline-none"
         type="text"
         id="playerName"
         name="playerName"
         [(ngModel)]="playerName"
+        required
+        minlength="5"
+        maxlength="20"
+        pattern="^(?=.*[a-zA-Z])(?!(?:.*\d){4})[a-zA-Z0-9]+$"
+        #myInput="ngModel"
       />
+      @if (myInput.invalid && myInput.touched) {
+        <span class="text-red-400 text-xs mt-2">Solo letras y números, 3-20 caracteres</span>
+      }
+      <div class="flex items-center justify-around mt-8 mb-11">
+        <label
+          class="text-sm mb-2 text-white flex items-center justify-center gap-x-1.5"
+          for="player"
+          >Jugador
+          <input
+            class="appearance-none w-5 h-5 border border-[#BB65FF] bg-transparent rounded-full checked:bg-[#BB65FF] checked:shadow-[inset_0_0_0_4px_#1F0D3F,inset_0px_0px_20px_0px_#BDBDFF33] shadow-[0px_0px_20px_0px_#BDBDFF33_inset]"
+            type="radio"
+            name="role"
+            [(ngModel)]="role"
+            value="player"
+            required
+        /></label>
+        <label
+          class="text-sm mb-2 text-white flex items-center justify-center gap-x-1.5"
+          for="spectator"
+          >Espectador
+          <input
+            class="appearance-none w-5 h-5 border border-[#BB65FF] bg-transparent rounded-full checked:bg-[#BB65FF] checked:shadow-[inset_0_0_0_4px_#1F0D3F,inset_0px_0px_20px_0px_#BDBDFF33] shadow-[0px_0px_20px_0px_#BDBDFF33_inset]"
+            type="radio"
+            name="role"
+            [(ngModel)]="role"
+            value="spectator"
+            required
+        /></label>
+      </div>
       <button
-        [disabled]="!playerName()"
+        type="submit"
+        [disabled]="!myForm.valid"
         class="bg-[#F6F7FC] text-[#330072] font-semibold text-[16px] rounded-4xl min-h-10 w-40 self-center cursor-pointer disabled:bg-[#45395d] disabled:text-[#7f7290] disabled:cursor-not-allowed"
       >
         Continuar

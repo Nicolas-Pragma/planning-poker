@@ -1,4 +1,4 @@
-import { afterNextRender, Component, ElementRef, signal, ViewChild } from '@angular/core';
+import { afterNextRender, Component, ElementRef, signal, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -7,16 +7,18 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './room.html',
 })
 export class Room {
-  @ViewChild('modal') modal!: ElementRef<HTMLDialogElement>;
+  modal = viewChild<ElementRef<HTMLDialogElement>>('modal');
   playerName = signal('');
+  role = signal('');
 
   createPlayer() {
-    console.log(`Jugador creado: ${this.playerName()}`);
+    console.log(`Jugador creado: ${this.playerName()} ${this.role()}`);
+    this.modal()?.nativeElement.close();
   }
 
   constructor() {
     afterNextRender(() => {
-      this.modal.nativeElement.showModal();
+      this.modal()?.nativeElement.showModal();
     });
   }
 }

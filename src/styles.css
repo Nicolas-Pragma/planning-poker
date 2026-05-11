@@ -2,6 +2,37 @@
 
 @import 'tailwindcss';
 
+@theme {
+  --color-primary: #330072;
+  --color-secondary: #bb65ff;
+  --color-background: #1f0d3f;
+  --color-background-button: #f6f7fc;
+  --color-disabled: #45395d;
+  --color-disabled-text: #7f7290;
+  --color-glow: #bdbdff33;
+  --color-avatar: #bdbdff;
+  --color-glow-purple: #6429cd;
+
+  --shadow-dialog:
+    0px 0px 20px 0px var(--color-glow) inset, 0px 0px 15px 0px var(--color-glow-purple);
+  --shadow-radio: 0px 0px 20px 0px var(--color-glow) inset;
+  --shadow-radio-checked:
+    inset 0 0 0 4px var(--color-background), inset 0px 0px 20px 0px var(--color-glow);
+}
+
+@utility bg-radial-main {
+  background-image: radial-gradient(
+    50% 50% at 50% 50%,
+    var(--color-primary) 0%,
+    rgba(31, 13, 63, 0.7) 100%
+  );
+}
+
+html,
+body {
+  overscroll-behavior: none;
+}
+
 body {
   font-family: Poppins, sans-serif;
   color: #fff;
@@ -12,4 +43,7 @@ body {
 
 dialog[open] {
   margin: auto;
+}
+dialog::backdrop {
+  backdrop-filter: blur(7px);
 }

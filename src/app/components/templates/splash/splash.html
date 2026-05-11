@@ -1,0 +1,12 @@
+@if (showLogo()) {
+  <section class="h-dvh w-dvw flex items-center justify-center bg-background bg-radial-main">
+    <figure class="flex items-center justify-center flex-col gap-4">
+      <img src="logoWhite.svg" alt="LogoPoker" />
+      <img src="logo.svg" alt="LogoPragma" />
+    </figure>
+  </section>
+} @else {
+  <app-base>
+    <ng-content></ng-content>
+  </app-base>
+}

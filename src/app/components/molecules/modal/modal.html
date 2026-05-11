@@ -1,0 +1,8 @@
+<dialog
+  #modal
+  (close)="open.set(false)"
+  (keydown.escape)="onCancel($event)"
+  class="bg-background py-16 px-28 border border-secondary rounded-3xl shadow-dialog"
+>
+  <ng-content></ng-content>
+</dialog>

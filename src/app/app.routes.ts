@@ -8,7 +8,7 @@ export const routes: Routes = [
     component: Home,
   },
   {
-    path: 'room/:gameName',
+    path: 'room/:id',
     component: Room,
   },
 ];

@@ -1,0 +1,11 @@
+<label class="text-sm text-white flex items-center justify-center gap-x-1.5" [for]="id()"
+  >{{ label() }}
+  <input
+    class="appearance-none w-5 h-5 border border-secondary bg-transparent rounded-full checked:bg-secondary checked:shadow-radio-checked shadow-radio"
+    [id]="id()"
+    type="radio"
+    [name]="name()"
+    [(ngModel)]="selected"
+    [value]="value()"
+    [required]="required()"
+/></label>

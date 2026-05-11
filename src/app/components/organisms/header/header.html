@@ -1,0 +1,19 @@
+<header
+  class="w-dvw grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center bg-transparent py-9 px-20"
+>
+  <figure class="flex justify-start items-center gap-4">
+    <img src="logoWhite.svg" alt="LogoPoker" />
+    @if (showItems()) {
+      <h1 class="text-xl font-semibold">Crear partida</h1>
+    }
+  </figure>
+  @if (showItems()) {
+    <h1 class="text-xl font-bold justify-self-center">{{ title() }}</h1>
+    <div class="flex justify-end items-center gap-6">
+      <div class="w-9 h-9 bg-avatar flex items-center justify-center rounded-full">
+        <span class="text-primary font-bold text-sm">{{ userInitials() }}</span>
+      </div>
+      <app-button variant="tertiary" type="button">Invitar jugadores</app-button>
+    </div>
+  }
+</header>

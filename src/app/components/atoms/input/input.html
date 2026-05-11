@@ -1,0 +1,20 @@
+<div class="flex flex-col">
+  @if (label()) {
+    <label class="text-sm text-white font-bold mb-2" [for]="id()">{{ label() }}</label>
+  }
+  <input
+    class="border border-secondary text-white min-w-73 px-2 max-h-10 py-2 rounded-3xl focus-visible:outline-none"
+    type="text"
+    [id]="id()"
+    [name]="name()"
+    [required]="required()"
+    [minlength]="minLength()"
+    [maxlength]="maxLength()"
+    [pattern]="pattern()"
+    #myInput="ngModel"
+    [(ngModel)]="value"
+  />
+  @if (error() && myInput.invalid && myInput.touched) {
+    <span class="text-red-400 text-xs mt-2">{{ error() }}</span>
+  }
+</div>

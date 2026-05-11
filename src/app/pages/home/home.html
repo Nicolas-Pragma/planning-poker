@@ -1,48 +1,18 @@
-@if (showLogo()) {
-  <section
-    class="h-dvh w-dvw flex items-center justify-center bg-[#1f0d3f] bg-[radial-gradient(50%_50%_at_50%_50%,#330072_0%,rgba(31,13,63,0.7)_100%)]"
-  >
-    <figure class="flex items-center justify-center flex-col gap-4">
-      <img src="logoWhite.svg" alt="LogoPoker" />
-      <img src="logo.svg" alt="LogoPragma" />
-    </figure>
-  </section>
-} @else {
-  <section
-    class="bg-[#1f0d3f] bg-[radial-gradient(50%_50%_at_50%_50%,#330072_0%,rgba(31,13,63,0.7)_100%)]"
-  >
-    <header class="h-36 w-dvw flex items-center bg-transparent py-9 px-20">
-      <figure class="flex items-center justify-center gap-4">
-        <img src="logoWhite.svg" alt="LogoPoker" />
-        <h1 class="text-xl font-semibold">Crear partida</h1>
-      </figure>
-    </header>
-    <section class="h-[calc(100dvh-144px)] w-dvw flex items-center justify-center pb-36">
-      <form #myForm="ngForm" (ngSubmit)="createGame()" class="flex flex-col">
-        <label class="text-sm font-bold mb-2" for="gameName">Nombra la partida</label>
-        <input
-          class="border border-[#BB65FF] min-w-73 px-2 max-h-10 py-2 rounded-3xl focus-visible:outline-none"
-          type="text"
-          id="gameName"
-          name="gameName"
-          [(ngModel)]="gameName"
-          required
-          minlength="5"
-          maxlength="20"
-          pattern="^(?=.*[a-zA-Z])(?!(?:.*\d){4})[a-zA-Z0-9]+$"
-          #myInput="ngModel"
-        />
-        @if (myInput.invalid && myInput.touched) {
-          <span class="text-red-400 text-xs mt-2">Solo letras y números, 3-20 caracteres</span>
-        }
-        <button
-          type="submit"
-          [disabled]="myForm.invalid"
-          class="bg-[#F6F7FC] text-[#330072] mt-8 font-semibold text-[16px] rounded-4xl min-h-10 w-40 self-center cursor-pointer disabled:bg-[#45395d] disabled:text-[#7f7290] disabled:cursor-not-allowed"
-        >
-          Crear partida
-        </button>
-      </form>
-    </section>
-  </section>
-}
+<app-splash>
+  <form #myForm="ngForm" (ngSubmit)="createRoom()" class="flex flex-col">
+    <app-input
+      label="Nombra la partida"
+      id="roomName"
+      name="roomName"
+      [required]="true"
+      [minLength]="5"
+      [maxLength]="20"
+      pattern="^(?=.*[a-zA-Z])(?!(?:.*\d){4})[a-zA-Z0-9]+$"
+      error="Solo letras y números, 5-20 caracteres"
+      [(value)]="roomName"
+    />
+    <app-button class="mt-8 self-center" [disabled]="!!myForm.invalid" type="submit">
+      Crear partida
+    </app-button>
+  </form>
+</app-splash>

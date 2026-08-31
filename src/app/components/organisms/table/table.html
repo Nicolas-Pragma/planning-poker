@@ -1,0 +1,47 @@
+<div class="relative p-26">
+  <div
+    class="flex justify-center items-center w-150 h-86 border-2 border-glow-purple shadow-dialog rounded-full"
+  >
+    <div
+      class="flex justify-center items-center w-138 h-74 border-2 border-glow-purple/60 rounded-full"
+    >
+      <div
+        class="flex justify-center items-center w-130 h-68 border-2 border-glow-purple shadow-table-internal rounded-full"
+      >
+        @if (meId() === roomIdAdmin() && roomStatus() === 'voting') {
+          <app-button variant="secondary" (click)="revealCards.emit()">Revelar cartas</app-button>
+        } @else if (meId() === roomIdAdmin() && roomStatus() === 'revealed') {
+          <app-button (click)="resetVotes.emit()">Reiniciar votos</app-button>
+        }
+      </div>
+    </div>
+  </div>
+  @for (player of orderedPlayers(); track player.id) {
+    @if (player.role === 'player') {
+      @if (roomStatus() === 'revealed') {
+        <app-card
+          size="small"
+          [value]="player.vote || ''"
+          [label]="player.name"
+          [class]="tablePositions[$index]"
+          [state]="'withValuePrimary'"
+          [variant]="'primary'"
+        ></app-card>
+      } @else {
+        <app-card
+          size="small"
+          [label]="player.name"
+          [class]="tablePositions[$index]"
+          [variant]="player.vote ? 'secondary' : 'primary'"
+        ></app-card>
+      }
+    } @else {
+      <app-avatar
+        [name]="player.name"
+        [showName]="true"
+        [class]="tablePositions[$index]"
+        size="medium"
+      ></app-avatar>
+    }
+  }
+</div>

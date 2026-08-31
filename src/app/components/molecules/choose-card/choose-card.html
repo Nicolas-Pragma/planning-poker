@@ -1,0 +1,11 @@
+<span class="flex text-xl font-semibold justify-center pb-6">Elige una carta 👇</span>
+<div class="flex gap-x-3.5">
+  @for (card of cards(); track $index) {
+    <app-card
+      [value]="card.value"
+      (click)="selectCard(card.value)"
+      [state]="card.selected ? 'withValue' : 'withValuePrimary'"
+      [variant]="card.selected ? 'secondary' : 'primary'"
+    ></app-card>
+  }
+</div>

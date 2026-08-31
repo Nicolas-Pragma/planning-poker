@@ -6,18 +6,23 @@
   --color-primary: #330072;
   --color-secondary: #bb65ff;
   --color-background: #1f0d3f;
+  --color-background-card: #e4a4ff;
   --color-background-button: #f6f7fc;
   --color-disabled: #45395d;
   --color-disabled-text: #7f7290;
+  --color-gray: #6a696c;
   --color-glow: #bdbdff33;
   --color-avatar: #bdbdff;
   --color-glow-purple: #6429cd;
+  --color-glow-internal: #0000000f;
 
   --shadow-dialog:
     0px 0px 20px 0px var(--color-glow) inset, 0px 0px 15px 0px var(--color-glow-purple);
   --shadow-radio: 0px 0px 20px 0px var(--color-glow) inset;
   --shadow-radio-checked:
     inset 0 0 0 4px var(--color-background), inset 0px 0px 20px 0px var(--color-glow);
+  --shadow-table-internal:
+    0px 3px 6px 0px var(--color-glow-internal), 0px 4px 4px 0px var(--color-glow-internal);
 }
 
 @utility bg-radial-main {
@@ -39,6 +44,7 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  overflow-x: hidden;
 }
 
 dialog[open] {

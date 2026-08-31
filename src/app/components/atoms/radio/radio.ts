@@ -5,10 +5,11 @@ import { ControlContainer, FormsModule } from '@angular/forms';
   selector: 'app-radio',
   imports: [FormsModule],
   templateUrl: './radio.html',
+  host: { '[attr.id]': 'null' },
   viewProviders: [
     {
       provide: ControlContainer,
-      useFactory: () => inject(ControlContainer, { skipSelf: true }),
+      useFactory: () => inject(ControlContainer, { skipSelf: true, optional: true }),
     },
   ],
 })

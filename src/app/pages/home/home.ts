@@ -24,7 +24,7 @@ export class Home implements OnInit {
       return;
     }
 
-    this.router.navigate(['/room', data.id], { state: { roomName: this.roomName() } });
+    this.router.navigate(['/room', data.id]);
   }
 
   ngOnInit() {

@@ -10,10 +10,16 @@
   @if (showItems()) {
     <h1 class="text-xl font-bold justify-self-center">{{ title() }}</h1>
     <div class="flex justify-end items-center gap-6">
-      <div class="w-9 h-9 bg-avatar flex items-center justify-center rounded-full">
-        <span class="text-primary font-bold text-sm">{{ userInitials() }}</span>
-      </div>
-      <app-button variant="tertiary" type="button">Invitar jugadores</app-button>
+      <app-avatar [name]="playerName()"></app-avatar>
+      <app-button variant="tertiary" type="button" (click)="showModal.set(true)"
+        >Invitar jugadores</app-button
+      >
+      <app-modal [(open)]="showModal" [showHeader]="true" >
+        <div class="flex flex-col items-center gap-y-8 mt-11">
+          <app-input id="shareUrl" name="shareUrl" [(value)]="shareUrl" [disabled]="true" />
+          <app-button (click)="copyText()">Copiar link</app-button>
+        </div>
+      </app-modal>
     </div>
   }
 </header>

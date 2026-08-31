@@ -5,10 +5,11 @@ import { ControlContainer, FormsModule } from '@angular/forms';
   selector: 'app-input',
   imports: [FormsModule],
   templateUrl: './input.html',
+  host: { '[attr.id]': 'null' },
   viewProviders: [
     {
       provide: ControlContainer,
-      useFactory: () => inject(ControlContainer, { skipSelf: true }),
+      useFactory: () => inject(ControlContainer, { skipSelf: true, optional: true }),
     },
   ],
 })
@@ -22,4 +23,5 @@ export class Input {
   pattern = input<string>('');
   error = input<string>('');
   value = model('');
+  disabled = input(false);
 }

@@ -8,6 +8,7 @@ import { Component, effect, ElementRef, input, model, viewChild } from '@angular
 export class Modal {
   open = model(false);
   closable = input(true);
+  showHeader = input(false);
   private modal = viewChild<ElementRef<HTMLDialogElement>>('modal');
 
   constructor() {

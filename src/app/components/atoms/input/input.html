@@ -3,12 +3,13 @@
     <label class="text-sm text-white font-bold mb-2" [for]="id()">{{ label() }}</label>
   }
   <input
-    class="border border-secondary text-white min-w-73 px-2 max-h-10 py-2 rounded-3xl focus-visible:outline-none"
+    class="border border-secondary text-white min-w-73 px-2 max-h-10 py-2 rounded-3xl focus-visible:outline-none disabled:cursor-not-allowed"
     type="text"
     [id]="id()"
     [name]="name()"
     [required]="required()"
     [minlength]="minLength()"
+    [disabled]="disabled()"
     [maxlength]="maxLength()"
     [pattern]="pattern()"
     #myInput="ngModel"

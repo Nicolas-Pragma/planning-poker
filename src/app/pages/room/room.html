@@ -1,4 +1,4 @@
-<app-main [title]="title()" [userInitials]="userInitials()">
+<app-main [title]="title()" [playerName]="playerName()">
   <app-modal [(open)]="showModal" [closable]="false">
     <form #myForm="ngForm" (ngSubmit)="createPlayer()" class="flex flex-col">
       <app-input
@@ -33,6 +33,25 @@
       <app-button class="self-center" [disabled]="!!myForm.invalid" type="submit"
         >Continuar</app-button
       >
+      @if (showMessageFullRoom()) {
+        <p class="text-red-500 text-center mt-4 text-sm">La sala está llena. No puedes unirte.</p>
+      }
     </form>
   </app-modal>
+  <div class="flex flex-col gap-y-12 items-center">
+    <app-table
+      [players]="players()"
+      [meId]="playerId()"
+      [roomIdAdmin]="roomIdAdmin()"
+      (revealCards)="revealVotes()"
+      (resetVotes)="resetVotes()"
+      [roomStatus]="roomStatus()"
+    ></app-table>
+    @if (role() === 'player') {
+      <app-choose-card
+        (cardSelected)="onVote($event)"
+        [roomStatus]="roomStatus()"
+      ></app-choose-card>
+    }
+  </div>
 </app-main>

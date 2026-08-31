@@ -1,0 +1,6 @@
+<div [class]="classes">
+  <span class="text-primary font-bold text-sm">{{ userInitials() }}</span>
+</div>
+@if (showName()) {
+  <span class="text-sm text-white mt-1 text-center block">{{ name() }}</span>
+}

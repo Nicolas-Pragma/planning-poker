@@ -2,7 +2,38 @@
   #modal
   (close)="open.set(false)"
   (keydown.escape)="onCancel($event)"
-  class="bg-background py-16 px-28 border border-secondary rounded-3xl shadow-dialog"
+  class="bg-background py-16 px-28 border border-secondary rounded-3xl shadow-dialog relative"
 >
+  @if (showHeader()) {
+    <div
+      class="absolute top-0 left-0 w-full h-14 bg-glow-purple flex items-center justify-between px-5"
+    >
+      <span class="text-white font-bold">Invitar jugadores</span>
+      <div class="cursor-pointer" (click)="open.set(false)">
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 22 22"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M3.66683 3.66602L18.3335 18.3327"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M18.3335 3.66602L3.66683 18.3327"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+    </div>
+  }
   <ng-content></ng-content>
 </dialog>

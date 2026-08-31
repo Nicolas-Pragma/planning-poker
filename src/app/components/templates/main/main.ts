@@ -8,7 +8,7 @@ import { Header } from '../../organisms/header/header';
 })
 export class Main {
   title = input.required<string>();
-  userInitials = input.required<string>();
+  playerName = input.required<string>();
 
-  showItems = computed(() => !!this.title() && !!this.userInitials());
+  showItems = computed(() => !!this.title() && !!this.playerName());
 }
